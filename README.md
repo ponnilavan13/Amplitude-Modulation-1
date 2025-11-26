@@ -78,7 +78,7 @@ Program
 
 
 
-Output Waveform
+Output Waveform 
 
 
 
