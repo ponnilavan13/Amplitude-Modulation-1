@@ -4,7 +4,7 @@ EXP NO: 1	GENERATION AND DETECTION OF AM
 
 AIM:
 
-To generate and detect the amplitude modulation and demodulation u s i n g S C I L A B and to calculate modulation index of AM.
+To generate and detect the amplitude modulation and demodulation u s i n g S C I L A B and to calculate modulation index of AM. 
 
 EQUIPMENTS REQUIRED
 
@@ -75,16 +75,58 @@ Compare the original modulating signal with the demodulated signal. PROCEDURE
 •	Verify the generated waveform using Tabulation and Model Waveform
 
 Program
+```
+Ac = 5.8;
+Am = 2.32;
+Fc = 32;
+Fm = 16;
+Fs = 32000;
+t = 0:1/Fs:2/Fm;
+e1 = (Ac*sin(2*3.14*Fm*t));
+subplot(4,1,1);
+plot(t,e1);
+xgrid;
+title('Message Signal');
+xlabel('Time');
+ylabel('Amplitude');
+
+e2 = (Ac*sin(2*3.14*Fc*t));
+subplot(4,1,2);
+plot(t,e2);
+xgrid;
+title('Carrier Signal');
+xlabel('Time');
+ylabel('Amplitude');
+
+e3 = (Ac + (Am*sin(2*3.14*Fm*t))).*sin(2*3.14*Fc*t);
+subplot(4,1,3);
+plot(t,e3);
+xgrid;
+title('AM Modulated Signal');
+xlabel('Time');
+ylabel('Amplitude');
+
+demodulated_signal = abs(hilbert(e3)) - Ac;
+subplot(4,1,4);
+plot(t,demodulated_signal);
+xgrid;
+title('Demodulated Signal');
+xlabel('Time');
+ylabel('Amplitude');
+```
 
 
 
-Output Waveform 
+Output Waveform
 
-
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/d2650cb2-d157-4018-9a47-42bfb83ba288" />
 
 
 
 TABULATION:
+
+![WhatsApp Image 2025-11-26 at 7 53 55 PM](https://github.com/user-attachments/assets/3c9a1138-289a-4e81-a54f-383791d16b89)
+
 
 
 
